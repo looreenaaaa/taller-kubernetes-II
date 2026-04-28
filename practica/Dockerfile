@@ -1,17 +1,5 @@
-FROM node:18-alpine
-LABEL authors="lorenappff"
+FROM nginx:alpine
 
-WORKDIR /app
+COPY index.html /usr/share/nginx/html/index.html
 
-COPY package*.json ./
-RUN npm install
-
-COPY . .
-RUN npm run build
-
-# puerto por defecto
-EXPOSE 3000
-
-CMD ["npm", "start"]
-
-ENTRYPOINT ["top", "-b"]
+EXPOSE 80
